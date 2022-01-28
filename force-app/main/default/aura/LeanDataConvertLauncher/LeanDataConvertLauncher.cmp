@@ -1,0 +1,24 @@
+<aura:component implements="flexipage:availableForAllPageTypes, force:hasRecordId" access="global">
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="leadRecord" type="Object"/>
+    <aura:attribute name="recordLoadError" type="String"/>
+
+    <force:recordData aura:id="recordLoader"
+    recordId="{!v.recordId}"
+    fields="Name,Company"
+    targetFields="{!v.leadRecord}"
+    targetError="{!v.recordLoadError}"
+    />
+
+    <lightning:card>
+        <aura:set attribute="title">
+            <div class="header">
+                <img src="{!$Resource.leandatalogo}"/>
+            </div>
+        </aura:set>
+        <lightning:overlayLibrary aura:id="overlayLib"/>
+        <div class="btn">
+            <lightning:button name="modal" label="Convert" onclick="{!c.handleShowModal}"/>
+        </div>
+    </lightning:card>
+</aura:component>	

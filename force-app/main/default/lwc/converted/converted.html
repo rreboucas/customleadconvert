@@ -1,0 +1,74 @@
+<template>
+    <div class="parent">
+    <ul>
+        <li>Your Lead has been converted</li>
+        <li>image</li>
+        <li>
+            <lightning-layout>
+                <lightning-layout-item>
+                    <h1>ACCOUNT</h1>
+                </lightning-layout-item>
+                <lightning-layout-item>
+                    <h1>CONTACT</h1>
+                </lightning-layout-item>
+                <lightning-layout-item>
+                    <h1>OPPORTUNITY</h1>
+                </lightning-layout-item>
+            </lightning-layout>
+        </li>
+        <li>
+            <lightning-layout>
+                <lightning-layout-item>
+                    <lightning-card>
+                        <h3 slot="title">
+                            <lightning-icon icon-name="standard:account" size="small"></lightning-icon>
+                            {accountname}
+                        </h3>
+                        <template if:true={account.data}>
+                            <div class="slds-m-around_medium">
+                                <p>Type: {accountype}</p>
+                                <p>Industry: {accountindustry}</p>
+                                <p>Total Sales: {accountsales}</p>
+                                <p>Employees: {accountemployees}</p>
+                            </div>
+                        </template>
+                    </lightning-card>
+                </lightning-layout-item>
+                <lightning-layout-item>
+                    <lightning-card>
+                        <h3 slot="title">
+                            <lightning-icon icon-name="standard:contact" size="small"></lightning-icon>
+                            {contactname}
+                        </h3>
+                        <template if:true={contact.data}>
+                            <div class="slds-m-around_medium">
+                                <p>Account Name: {accountname}</p>
+                                <p>Title: {contacttitle}</p>
+                                <p><lightning-formatted-phone value={contactphone}></lightning-formatted-phone></p>
+                                <p><lightning-formatted-email value={contactemail}></lightning-formatted-email></p>
+                            </div>
+                        </template>
+                    </lightning-card>
+                </lightning-layout-item>
+                <lightning-layout-item>
+                    <lightning-card>
+                        <h3 slot="title">
+                            <lightning-icon icon-name="standard:opportunity" size="small"></lightning-icon>
+                            {opptyname}
+                        </h3>
+                        <template if:true={opportunity.data}>
+                            <div class="slds-m-around_medium">
+                                <p>Account Name: {accountname}</p>
+                                <p>Amount: {opptyamount}</p>
+                                <p>Close Date: {opptyclosedate}</p>
+                                <p>Probability (%): {opptyprob}</p>
+                            </div>
+                        </template>
+                    </lightning-card>
+                </lightning-layout-item>
+            </lightning-layout>
+        </li>
+    </ul>
+
+</div>
+</template>

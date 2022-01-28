@@ -1,0 +1,94 @@
+<template>
+    <div class="parent">
+    <ul>
+        <li><div class="header">Your Lead has been converted</div></li>
+        <li><img src={logoUrl}></li>
+        <li>
+            <lightning-layout  horizontal-align="spread">
+                <lightning-layout-item>
+                    <h1>ACCOUNT</h1>
+                </lightning-layout-item>
+                <lightning-layout-item>
+                    <h1>CONTACT</h1>
+                </lightning-layout-item>
+                <lightning-layout-item>
+                    <h1>OPPORTUNITY</h1>
+                </lightning-layout-item>
+            </lightning-layout>
+        </li>
+        <li>
+            <lightning-layout  horizontal-align="spread">
+                <lightning-layout-item>
+                    <lightning-card>
+                        <template if:true={account}>
+                        <h3 slot="title">
+                            <lightning-icon icon-name="standard:account" size="small"></lightning-icon>
+                            <a onclick={navToAccount}>
+                                <p class="slds-truncate_container_25" title={accountname}>
+                                    {accountname}
+                                </p>
+                                
+                            </a>
+                        </h3>
+                            <div class="slds-m-around_medium">
+                                <p>Type: {actype}</p>
+                                <p>Industry: {actindustry}</p>
+                                <p>Total Sales: {actsales}</p>
+                                <p>Employees: {actemployees}</p>
+                            </div>
+                        </template>
+                    </lightning-card>
+                </lightning-layout-item>
+                <lightning-layout-item>
+                    <template if:true={contact}>
+                    <lightning-card>
+                        <h3 slot="title">
+                            <lightning-icon icon-name="standard:contact" size="small"></lightning-icon>
+                            <a onclick={navToContact}>
+                                <p class="slds-truncate_container_25" title={contactname}>
+                                    {contactname}
+                                </p>
+                            </a>
+                        </h3>
+                        
+                            <div class="slds-m-around_medium">
+                                <template if:true={account}>
+                                    <p>Account Name: {accountname}</p>
+                                </template>
+                                <p>Title: {contactitle}</p>
+                                <p><lightning-formatted-phone value={contactphone}></lightning-formatted-phone></p>
+                                <p><lightning-formatted-email value={contactemail}></lightning-formatted-email></p>
+                            </div>
+                    </lightning-card>
+                </template>
+                </lightning-layout-item>
+                <lightning-layout-item>
+                    <lightning-card>
+                        <template if:true={opportunity}>
+                        <h3 slot="title">
+                            <lightning-icon icon-name="standard:opportunity" size="small"></lightning-icon>
+                            <a onclick={navToOppty}>
+                                <p class="slds-truncate_container_25" title={opptyname}>
+                                    {opptyname}
+                                </p>
+                                
+                            </a>
+                        </h3>
+                        
+                            <div class="slds-m-around_medium">
+                                <template if:true={account}>
+                                    <p>Account Name: {accountname}</p>
+                                </template>
+                                <p>Amount: {opptyamount}</p>
+                                <p>Close Date: {opptyclosedt}</p>
+                                <p>Probability (%): {opptyprob}</p>
+                            </div>
+                        </template>
+                    </lightning-card>
+                </lightning-layout-item>
+            </lightning-layout>
+        </li>
+    </ul>
+
+</div>
+</template>

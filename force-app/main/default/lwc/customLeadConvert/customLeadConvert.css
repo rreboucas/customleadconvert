@@ -1,0 +1,17 @@
+.parent {
+    position:relative;
+    display: block;
+}
+.inputext {
+    min-width: 250px;
+}
+.section {
+    background-color: rgb(243, 242, 242);
+}
+.footer {
+    padding: 0.8rem;
+    float: right;
+}
+li {
+    padding-top: 0.5rem;
+}

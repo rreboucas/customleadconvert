@@ -1,0 +1,145 @@
+<template>
+    <div class="parent slds-is-relative">
+        <template if:true={isStep1}>
+            <template if:true={converting}>
+                <lightning-spinner alternative-text="Loading"></lightning-spinner>
+            </template>
+    <ul>
+        <li>
+            <div class="section">
+            <lightning-accordion>
+                <lightning-accordion-section name="Account" label="Account">
+                    <div class="slds-grid slds-gutters">
+                        <div class="slds-col">
+                            <input type="radio" id="acctcreatenw" name="acctradio" value="huey"
+                                checked>
+                            <label class="slds-radio__label slds-p-left_small" for="acctcreatenw">Create New</label>
+                        </div>
+                        <div class="slds-col">
+                            <label class="slds-radio__label">-- OR --</label>
+                        </div>
+                        
+                        <div class="slds-col">
+                            <input type="radio" id="acctexistradio" name="acctradio" value="dewey">
+                            <label class="slds-radio__label slds-p-left_small" for="acctexistradio">Choose Existing</label>
+                        </div>
+                    </div>
+                        <lightning-layout horizontal-align="spread">
+                            <lightning-layout-item>
+                                <div class="inputext"><lightning-input type="text" label="Account Name" value={accountname} required></lightning-input></div>
+                            </lightning-layout-item>
+                            <lightning-layout-item>
+                                <div class="inputext">
+                                <c-lookup
+                                    errors={errors}
+                                    onsearch={handleLookupSearch}
+                                    onselectionchange={handleLookupSelectionChange}
+                                    label="Search"
+                                    placeholder="Search for matching accounts"
+                                    is-multi-entry=false
+                                >
+                                </c-lookup>
+                                </div>
+                            </lightning-layout-item>
+                        </lightning-layout> 
+                </lightning-accordion-section>
+            </lightning-accordion>
+            </div>
+        </li>
+        <li>
+            <div class="section">
+            <lightning-accordion>
+                <lightning-accordion-section name="Contact" label="Contact">
+                    <div class="slds-grid slds-gutters">
+                        <div class="slds-col">
+                            <input type="radio" id="contactcreatenw" name="contactradio" value="contactcreatenw"
+                                checked>
+                            <label class="slds-radio__label slds-p-left_small" for="contactcreatenw">Create New</label>
+                        </div>
+                        <div class="slds-col">
+                            <label class="slds-radio__label">-- OR --</label>
+                        </div>
+                        
+                        <div class="slds-col">
+                            <input type="radio" id="contactexisting" name="contactradio" value="contactexisting">
+                            <label class="slds-radio__label slds-p-left_small" for="contactexisting">Choose Existing</label>
+                        </div>
+                    </div>
+                        <lightning-layout horizontal-align="spread">
+                            <lightning-layout-item>
+                                <div class="inputext"><lightning-input type="text" label="Contact Name" value={contactname}></lightning-input></div>
+                            </lightning-layout-item>
+                            <lightning-layout-item>
+                                <div class="inputext">
+                                <c-lookup
+                                    errors={errors}
+                                    onsearch={handleLookupSearch}
+                                    onselectionchange={handleLookupSelectionChange}
+                                    label="Search"
+                                    placeholder="Search for matching contacts"
+                                    is-multi-entry=false
+                                >
+                                </c-lookup>
+                                </div>
+                            </lightning-layout-item>
+                        </lightning-layout> 
+                </lightning-accordion-section>
+            </lightning-accordion>
+            </div>
+        </li>
+        <li>
+            <div class="section">
+            <lightning-accordion>
+                <lightning-accordion-section name="Opportunity" label="Opportunity">
+                    <div class="slds-grid slds-gutters">
+                        <div class="slds-col">
+                            <input type="radio" id="opptycreatenw" name="opptyradio" value="opptynew"
+                                checked>
+                            <label class="slds-radio__label slds-p-left_small" for="opptycreatenw">Create New</label>
+                        </div>
+                        <div class="slds-col">
+                            <label class="slds-radio__label">-- OR --</label>
+                        </div>
+                        
+                        <div class="slds-col">
+                            <input type="radio" id="opptyexisting" name="opptyradio" value="opptyexisting">
+                            <label class="slds-radio__label slds-p-left_small" for="opptyexisting">Choose Existing</label>
+                        </div>
+                    </div>
+                        <lightning-layout horizontal-align="spread">
+                            <lightning-layout-item>
+                                <div class="inputext"><lightning-input type="text"  label="Opportunity Name" value={accountname}></lightning-input></div>
+                            </lightning-layout-item>
+                            <lightning-layout-item>
+                                <div class="inputext">
+                                <c-lookup
+                                    errors={errors}
+                                    onsearch={handleLookupSearch}
+                                    onselectionchange={handleLookupSelectionChange}
+                                    label="Search"
+                                    placeholder="To find opportunity, chose an existing account"
+                                    is-multi-entry=false
+                                >
+                                </c-lookup>
+                                </div>
+                            </lightning-layout-item>
+                        </lightning-layout> 
+                </lightning-accordion-section>
+            </lightning-accordion>
+            </div>
+        </li>
+        <li>
+            <div class="section">
+                <div align="right" class="footer">
+                    <lightning-button variant="brand" label="Convert" title="Convert" onclick={handleConvert} class="slds-m-left_x-small"></lightning-button>
+                </div>
+            </div>
+        </li>
+    </ul>
+    </template>
+    <template if:true={isStep2}>
+        <c-result accountid={accountid} contactid={contactid} opptyid={opportunityid}></c-result>
+        <!--<c-converted accountid={accountid} contactid={contactid} opptyid={opportunityid}></c-converted> -->
+    </template>
+</div>
+</template>
